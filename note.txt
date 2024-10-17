@@ -1,0 +1,17 @@
+Clerk:
+After install and complete the procedures we did
+-.env.local -->added--> provieded data 
+-.env.local -->added--> NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in --> NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up -->fot this--> created==> [[...sign-in]] folder
+
+-middleware.ts --> added--> createRouteMatcher --> Used Array
+
+-layout.tsx-->added--> ClerkProvider --> appearance={{ variables: { colorBackground: "" } }} ==> it's for change the default form color ++etc
+
+-- backgrond image -->tailwind.config.ts --> added
+--added --> Toast --> ShadCn
+
+Problem::
+See Upcoming, Previous, Recording problem==> meetingCard.tsx & CallList.tsx
+
+
+===meetingCard.tsx & CallList.tsx & Previous Page & Recordings page & upcoming page ===
