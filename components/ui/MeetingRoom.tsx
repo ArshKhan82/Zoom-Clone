@@ -1,13 +1,10 @@
 import { cn } from "@/lib/utils";
 import {
-   AcceptCallButton,
    CallControls,
    CallingState,
    CallParticipantsList,
    CallStatsButton,
-   CompositeButton,
    PaginatedGridLayout,
-   ReactionsButton,
    SpeakerLayout,
    useCallStateHooks,
 } from "@stream-io/video-react-sdk";
@@ -16,7 +13,6 @@ import {
    DropdownMenu,
    DropdownMenuContent,
    DropdownMenuItem,
-   DropdownMenuLabel,
    DropdownMenuSeparator,
    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -34,7 +30,7 @@ const MeetingRoom = () => {
 
    const isPersonalRoom = !!searchParams.get("persoanl");
 
-   const [layout, setlayout] = useState<CallLayoutType>("speaker-left");
+   const [layout] = useState<CallLayoutType>("speaker-left");
    // const [isChatOpen, setIsChatOpen] = useState(false);
 
    const [showParticipants, setshowParticipants] = useState(false);

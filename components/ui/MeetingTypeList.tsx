@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import MeetingModal from "./MeetingModal";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useUser } from "@clerk/nextjs";
-import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
 import { Textarea } from "./textarea";
 import DatePicker from "react-datepicker";
@@ -146,9 +145,9 @@ const MeetingTypeList = () => {
                }}
                image="/icons/checked.svg"
                buttonIcon="/icons/copy.svg"
-               buttonText="Copy Meeting Link"
-               children={undefined}
-            />
+               buttonText="Copy Meeting Link">
+               {undefined}
+            </MeetingModal>
          )}
 
          <MeetingModal
@@ -157,9 +156,9 @@ const MeetingTypeList = () => {
             title="Start an Instant Meeting"
             className="text-center"
             buttonText="Start Meeting"
-            handleClick={createMeeting}
-            children={undefined} // children={undefined}
-         />
+            handleClick={createMeeting}>
+            <></>
+         </MeetingModal>
 
          <MeetingModal
             isOpen={meetingState === "isJoiningMeeting"}
