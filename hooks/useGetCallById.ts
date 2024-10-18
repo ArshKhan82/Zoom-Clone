@@ -4,6 +4,7 @@ import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 export const useGetCallById = (id: string | string[]) => {
    const [call, setCall] = useState<Call>();
    const [isCallLoading, setIsCallLoading] = useState(true);
+
    const client = useStreamVideoClient();
 
    useEffect(() => {
@@ -13,15 +14,18 @@ export const useGetCallById = (id: string | string[]) => {
 
       const loadCall = async () => {
          try {
+            // https://getstream.io/video/docs/react/guides/querying-calls/#filters
             const { calls } = await client.queryCalls({
                filter_conditions: { id },
             });
+
             if (calls.length > 0) {
                setCall(calls[0]);
             }
+
+            setIsCallLoading(false);
          } catch (error) {
-            console.error("Error loading call:", error);
-         } finally {
+            console.error(error);
             setIsCallLoading(false);
          }
       };
@@ -32,6 +36,40 @@ export const useGetCallById = (id: string | string[]) => {
    return { call, isCallLoading };
 };
 
+// import { useEffect, useState } from "react";
+// import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
+
+// export const useGetCallById = (id: string | string[]) => {
+//    const [call, setCall] = useState<Call>();
+//    const [isCallLoading, setIsCallLoading] = useState(true);
+//    const client = useStreamVideoClient();
+
+//    useEffect(() => {
+//       if (!client) {
+//          return;
+//       }
+
+//       const loadCall = async () => {
+//          try {
+//             const { calls } = await client.queryCalls({
+//                filter_conditions: { id },
+//             });
+//             if (calls.length > 0) {
+//                setCall(calls[0]);
+//             }
+//          } catch (error) {
+//             console.error("Error loading call:", error);
+//          } finally {
+//             setIsCallLoading(false);
+//          }
+//       };
+
+//       loadCall();
+//    }, [client, id]);
+
+//    return { call, isCallLoading };
+// };
+//>====================================================================================================>
 //  import { Client } from "@clerk/nextjs/server";
 //  import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 //  import { useEffect, useState } from "react"
